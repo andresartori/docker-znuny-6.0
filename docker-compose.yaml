@@ -1,25 +1,14 @@
 services:
   znuny:
     container_name: znuny
-    image: znuny:6.0.37
+    image: znuny:6.1.2
     hostname: znuny
     ports:
       - "8000:80"
       - "8443:443"
     environment:
-      ZNUNY_UPDATE: yes
+      ZNUNY_UPDATE: no
       ZNUNY_UPGRADE: no
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/docker/znuny/Config.pm:/opt/otrs/Kernel/Config.pm
-    networks:
-      - net-prd
-      - net_db
-
-networks:
-  net-prd:
-    name: net-prd
-    external: true
-  net_db:
-    name: net_db
-    external: true
